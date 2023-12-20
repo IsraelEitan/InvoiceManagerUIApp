@@ -1,0 +1,4 @@
+<label>Status:</label>
+<select [(ngModel)]="selectedStatus" (ngModelChange)="statusChanged()">
+  <option *ngFor="let status of invoiceStatuses" [value]="status">{{ status }}</option>
+</select>

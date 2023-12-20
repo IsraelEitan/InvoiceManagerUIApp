@@ -1,0 +1,18 @@
+<h2>Edit Invoice</h2>
+<form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Date:</label>
+    <input type="date" formControlName="date">
+    <app-validation-error [control]="invoiceForm.get('date')!"></app-validation-error>
+  </div>
+  <div>
+    <app-invoice-status [initialStatus]="initialStatus"  (statusChange)="onStatusChange($event)"></app-invoice-status>
+    <app-validation-error [control]="invoiceForm.get('status')!"></app-validation-error>
+  </div>
+  <div>
+    <label>Amount:</label>
+    <input type="number" formControlName="amount">
+    <app-validation-error [control]="invoiceForm.get('amount')!"></app-validation-error>
+  </div>
+  <button type="submit">Update Invoice</button>
+</form>

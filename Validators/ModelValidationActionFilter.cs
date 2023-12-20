@@ -1,0 +1,21 @@
+﻿using InvoiceManagerUI.Exceptions;
+using InvoiceManagerUI.Utils;
+using Microsoft.AspNetCore.Mvc.Filters;
+
+namespace InvoiceManagerUI.Validators
+{
+    public class ModelValidationActionFilter : IActionFilter
+    {
+        public void OnActionExecuting(ActionExecutingContext context)
+        {
+            if (!context.ModelState.IsValid)
+            {
+                var errorDetails = ErrorHandlingService.CreateValidationErrorMessage(context.ModelState);
+                throw new InvalidInputException(errorDetails);
+            }
+
+        }
+
+        public void OnActionExecuted(ActionExecutedContext context) { }
+    }
+}

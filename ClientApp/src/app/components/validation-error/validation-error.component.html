@@ -1,0 +1,3 @@
+<ng-container *ngIf="control.invalid && (control.dirty || control.touched)">
+  <div *ngFor="let error of getErrors()" class="error-message">{{ error }}</div>
+</ng-container>
